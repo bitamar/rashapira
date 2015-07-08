@@ -1,0 +1,8 @@
+name = CStark
+description = Custom Stark
+package = CStark
+version = VERSION
+core = 7.x
+stylesheets[all][] = style.css
+; scripts[] = jquery.pjax.js
+; scripts[] = cstark.js

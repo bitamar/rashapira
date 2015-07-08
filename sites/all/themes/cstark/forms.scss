@@ -1,0 +1,36 @@
+.node-painting-form #edit-field-dimensions {
+
+  .tabledrag-toggle-weight-wrapper {
+    display: none;
+  }
+
+  #field-dimensions-values {
+    border: none;
+
+    th {
+      display: none;
+    }
+
+    th:first-child {
+      display: block;
+      text-transform: none;
+      background-color: transparent;
+      border: none;
+    }
+
+    .field-multiple-drag, .delta-order {
+      display: none;
+    }
+
+    tr {
+      background-color: transparent;
+      border: 0;
+      display: inline-block;
+      margin-right: 20px;
+
+      td {
+        padding: 0;
+      }
+    }
+  }
+}

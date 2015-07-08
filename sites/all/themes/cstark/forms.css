@@ -1,0 +1,20 @@
+.node-painting-form #edit-field-dimensions .tabledrag-toggle-weight-wrapper {
+  display: none; }
+.node-painting-form #edit-field-dimensions #field-dimensions-values {
+  border: none; }
+  .node-painting-form #edit-field-dimensions #field-dimensions-values th {
+    display: none; }
+  .node-painting-form #edit-field-dimensions #field-dimensions-values th:first-child {
+    display: block;
+    text-transform: none;
+    background-color: transparent;
+    border: none; }
+  .node-painting-form #edit-field-dimensions #field-dimensions-values .field-multiple-drag, .node-painting-form #edit-field-dimensions #field-dimensions-values .delta-order {
+    display: none; }
+  .node-painting-form #edit-field-dimensions #field-dimensions-values tr {
+    background-color: transparent;
+    border: 0;
+    display: inline-block;
+    margin-right: 20px; }
+    .node-painting-form #edit-field-dimensions #field-dimensions-values tr td {
+      padding: 0; }

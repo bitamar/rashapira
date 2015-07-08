@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Code for the Shapira feature.
+ */
+
+include_once 'shapira.features.inc';
+
+/**
+ * hook_menu_alter
+ */
+function shapira_menu_alter(&$items) {
+  $items['node']['page callback'] = 'shapira_page_default';
+}
+
+/**
+ * hook_menu
+ */
+function shapira_menu() {
+  $items = array();
+
+  $items['set-as-main/%node'] = array(
+    'page callback' => 'shapira_set_main_node',
+    'page arguments' => array(1),
+    'access arguments' => array('administer nodes'),
+  );
+
+  return $items;
+}
+
+function shapira_form_painting_node_form_alter(&$form, &$form_alter) {
+  $form['revision_information']['#access'] = false;
+  $form['path']['#access'] = false;
+  $form['author']['#access'] = false;
+  $form['options']['#access'] = false;
+  unset($form['additional_settings']);
+  $form['field_dimensions']['#tree'] = false;
+  $form['field_dimensions']['und'][0]['_weight']['#access'] = false;
+  $form['field_dimensions']['und'][1]['_weight']['#access'] = false;
+  $form['menu']['#access'] = false;
+
+  $form['#attached']['css'] = array(
+    drupal_get_path('theme', 'cstark') . '/forms.css',
+  );
+}
+
+function shapira_set_main_node($node) {
+  $node->promote = !$node->promote;
+  node_save($node);
+  drupal_goto('node/' . $node->nid);
+}
+
+function shapira_page_default() {
+  return array();
+}
+
+function shapira_get_painting_pager($painting_nid) {
+  $wrapper = entity_metadata_wrapper('node', $painting_nid);
+  if (!$wrapper->field_categories->value()) {
+    return;
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'painting')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_categories', 'tid', $wrapper->field_categories->tid->value())
+    ->fieldOrderBy('field_weight', 'value', 'ASC')
+    ->propertyOrderBy('created', 'DESC');
+
+  $result = $query->execute();
+  $nids = array_keys($result['node']);
+  foreach ($nids as $delta => $nid) {
+    if ($nid == $painting_nid) {
+      $previous_nid = isset($nids[$delta - 1]) ? $nids[$delta - 1] : null;
+      $next_nid = isset($nids[$delta + 1]) ? $nids[$delta + 1] : null;
+      break;
+    }
+  }
+
+  $items = array();
+  $items[] = $previous_nid ? l(t('‹ previous'), 'node/' . $previous_nid, array('attributes' => array('class' => array('pager')))) : '<span class="disabled">' . t('‹ previous') . '</span>';
+  $items[] = $next_nid ? l(t('next ›'), 'node/' . $next_nid, array('attributes' => array('class' => array('pager')))) : '<span class="disabled">' . t('next ›') . '</span>';
+  $items[] = t('@current of @total', array('@current' => $delta + 1, '@total' => count($nids)));
+
+  return theme('item_list', array('items' => $items, 'attributes' => array('class' => array('pager'))));
+}
+
+
+function shapira_form_user_login_alter(&$form, &$form_state) {
+  $form['name']['#description'] = '';
+  $form['pass']['#description'] = '';
+}
