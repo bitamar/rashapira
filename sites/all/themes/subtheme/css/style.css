@@ -1,4 +1,172 @@
-/**
- * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
- * remove this comment and start adding your styles to this file.
- */
+body {
+  font-size: 11px; }
+
+.element-invisible {
+  display: none; }
+
+#page {
+  width: 960px;
+  margin: 60px auto; }
+
+#content,
+#sidebar {
+  float: left;
+  position: relative; }
+
+#sidebar {
+  width: 215px;
+  padding-right: 10px; }
+
+#content {
+  width: 550px; }
+
+.region-sidebar-first {
+  margin-top: 35px; }
+
+h1 {
+  margin-top: 0;
+  font-size: 16px; }
+
+h2 {
+  margin: 0 0 5px 0;
+  font-size: 17px; }
+
+a {
+  text-decoration: none;
+  transition: 0.8s;
+  color: #000000; }
+  a:visited {
+    color: #000000; }
+  a:hover {
+    color: #BBBBBB;
+    text-decoration: underline; }
+  a.active {
+    color: #BBBBBB; }
+
+#admin-menu {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none; }
+
+ul.menu {
+  padding: 0; }
+  ul.menu li {
+    list-style-type: none;
+    margin-top: 5px; }
+    ul.menu li ul.menu {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden; }
+      ul.menu li ul.menu.open {
+        opacity: 1;
+        max-height: 500px; }
+    ul.menu li.active-trail > ul.menu {
+      opacity: 1;
+      max-height: 500px; }
+
+.field-name-field-dimensions {
+  display: block; }
+  .field-name-field-dimensions .field-items .field-item {
+    display: inline; }
+    .field-name-field-dimensions .field-items .field-item.even:after {
+      content: "x";
+      margin: 0 1px;
+      font-family: Arial;
+      font-size: 9px;
+      padding-bottom: 2px;
+      display: inline-block;
+      vertical-align: middle; }
+    .field-name-field-dimensions .field-items .field-item.odd:after {
+      content: "cm";
+      margin-left: 3px; }
+
+.pager {
+  padding: 0;
+  font-size: 13px;
+  margin-top: 0; }
+  .pager li {
+    list-style-type: none;
+    display: inline; }
+    .pager li:first-child:after {
+      content: "|";
+      margin-left: 5px; }
+    .pager li .disabled {
+      color: #BBBBBB; }
+    .pager li:last-child {
+      margin-left: 20px; }
+  .pager .ajax-progress {
+    display: none; }
+
+.node {
+  position: relative;
+  margin-bottom: 20px; }
+
+.node-painting {
+  height: 670px;
+  margin-left: auto;
+  margin-right: auto; }
+  .node-painting .field-item {
+    font-size: 13px; }
+  .node-painting .field-name-field-dimensions .field-item,
+  .node-painting .field-name-field-medium .field-item,
+  .node-painting .field-name-field-owner .field-item {
+    font-size: 11px; }
+  .node-painting ul.pager {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -75px; }
+  .node-painting .group-details {
+    border: none;
+    padding: 0;
+    margin-top: 20px; }
+
+#edit-links a, #block-system-user-menu .menu a {
+  display: inline-block;
+  color: black;
+  background-color: #d3d3d3;
+  padding: 4px 8px;
+  font-size: 12px; }
+  #edit-links a:hover, #block-system-user-menu .menu a:hover {
+    background-color: #F5F2CE; }
+  #edit-links a.facebook:hover, #block-system-user-menu .menu a.facebook:hover {
+    background-color: #3b5998;
+    color: white; }
+
+#block-system-user-menu li {
+  display: inline-block;
+  margin-top: 3px; }
+
+.node #edit-links {
+  position: absolute;
+  top: -15px; }
+  .node #edit-links a {
+    display: none; }
+
+.node:hover #edit-links a {
+  display: inline-block; }
+
+#block-system-navigation .menu a {
+  text-transform: uppercase; }
+
+.view-main-painting .views-field-title {
+  font-size: 13px; }
+
+.messages {
+  border: 1px solid;
+  padding: 10px;
+  margin-bottom: 20px; }
+  .messages.error {
+    border-color: red; }
+
+.node-page ul {
+  padding: 0; }
+  .node-page ul li {
+    list-style-type: none; }
+
+.node-type-page .content table, .node-type-page .content td {
+  border: none; }
+.node-type-page .content td:first-child {
+  width: 100px; }
+
+/*# sourceMappingURL=style.css.map */
